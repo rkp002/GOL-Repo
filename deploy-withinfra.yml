@@ -67,7 +67,7 @@
      state: present
   - name: Copy fil
     copy:
-     src:  /etc/tomcat/tomcat-users.xml
+     src:  /var/lib/jenkins/workspace/Sample/tomcat-users.xml
      dest: /usr/share/tomcat/conf/tomcat-users.xml
   - name: enable service tomcat
     systemd:
