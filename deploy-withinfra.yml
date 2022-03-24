@@ -19,17 +19,17 @@
   - name: launching ec2 instance
     ec2:
       instance_type: t2.micro
-      key_name: sankar-aws
-      image: ami-0067e91fc0543d9f4
+      key_name: Karthik-Test
+      image: ami-0bee742d38b451a1e
       region: us-east-2
-      group: launch-wizard-3
+      group: launch-wizard-25
       count: 1
       wait: yes
       wait_timeout: 500
       instance_tags: 
             name: webserver
       assign_public_ip: yes
-      vpc_subnet_id: subnet-097a8a99f15cf0a07
+      vpc_subnet_id: subnet-1ad8e756
     register: ec2  
   - name: Add Instance IP into in-memory inventory file not into hosts file
     add_host: 
