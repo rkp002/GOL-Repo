@@ -12,7 +12,7 @@ stages {
 
       // Get some code from a GitHub repository
 
-      git 'https://github.com/raknas999/GOL-Repo.git'
+      git 'https://github.com/rkp002/GOL-Repo.git'
 
       // Get the Maven tool.
      
@@ -62,8 +62,8 @@ stages {
     stage('Build and Push Docker Image') {
       steps {
         sh label: '', script: '''sudo docker build -t gameoflife-image:$BUILD_NUMBER .
-                                 sudo docker tag gameoflife-image:$BUILD_NUMBER docker.io/raknas000/gameoflife-image:$BUILD_NUMBER
-                                 sudo docker push docker.io/raknas000/gameoflife-image:$BUILD_NUMBER'''
+                                 sudo docker tag gameoflife-image:$BUILD_NUMBER docker.io/rkp002/gameoflife-image:$BUILD_NUMBER
+                                 sudo docker push docker.io/rkp002/gameoflife-image:$BUILD_NUMBER'''
                                  
       }
  }
@@ -75,9 +75,9 @@ stages {
  }
   stage('Apply Kubernetes files') {
             steps {
-             sh label: '', script: '''scp *.yml jenkins@3.145.132.170:/home/jenkins
-                                  ssh jenkins@3.145.132.170 kubectl apply -f deploy-kube.yml
-                                  ssh jenkins@3.145.132.170 kubectl apply -f service.yml'''
+             sh label: '', script: '''scp *.yml jenkins@3.108.250.2:/home/jenkins
+                                  ssh jenkins@3.108.250.2 kubectl apply -f deploy-kube.yml
+                                  ssh jenkins@3.108.250.2 kubectl apply -f service.yml'''
            
         }
      }
