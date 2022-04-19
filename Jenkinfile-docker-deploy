@@ -82,20 +82,6 @@ stages {
            
         }
      }
-    stage('Validation and Rollback') {
-            steps {
-             sh label: '', script: '''sleep 30
-                                        status_code=$(curl --write-out %{http_code} --silent --output /dev/null http://52.66.174.115/:30005/gameoflife)
-                                        if [[ "$status_code" -ne 200 ]] ; then
-                                            echo "Deployment has some problem - $status_code"
-                                            ssh jenkins@13.235.68.81 kubectl rollout undo deployment/sample-deploy
-                                        else
-                                            ssh jenkins@13.235.68.81 kubectl rollout  status deployment/sample-deploy
-                                        fi
-                                    '''
-           
-        }
-     }   
 /* stage('Deploy to Kubernetes') {
          steps {
          withKubeConfig([credentialsId: 'jenkins-kube']) {
